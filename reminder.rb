@@ -1,5 +1,6 @@
 require 'date'
 require_relative 'time_constants.rb'
+require 'colorize'
 class Reminder < TimeConstants
   attr_accessor :reminder_name
   attr_accessor :finish_time
@@ -22,6 +23,7 @@ class Reminder < TimeConstants
       while @finish_time > DateTime.now()
       end
     end
-    puts @reminder_name
+    puts @reminder_name.colorize(:blue)
+    system "aplay -q data/audio_files/Alesis-Fusion-Bass-C3.wav"
   end
 end

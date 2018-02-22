@@ -1,0 +1,15 @@
+Task Name~ Start Time~ End Time~ Total Time
+Update sFMEA~ 2018-02-21 09:10:56 +0000~ 2018-02-21 09:37:28 +0000~ Total Time: 0.44
+Standup~ 2018-02-21 09:37:36 +0000~ 2018-02-21 09:41:17 +0000~ Total Time: 0.06
+Send sFMEA~ 2018-02-21 09:41:26 +0000~ 2018-02-21 10:21:04 +0000~ Total Time: 0.66
+Figuring out if I should do ES11000 or DmD~ 2018-02-21 10:21:19 +0000~ 2018-02-21 10:23:21 +0000~ Total Time: 0.03
+Review Daily mood Dairy~ 2018-02-21 10:23:40 +0000~ 2018-02-21 10:27:40 +0000~ Total Time: 0.07
+Release of Gaurdian Documents~ 2018-02-21 10:27:52 +0000~ 2018-02-21 10:59:04 +0000~ Total Time: 0.52
+Add GL Testers to Jira~ 2018-02-21 10:59:50 +0000~ 2018-02-21 12:05:49 +0000~ Total Time: 1.1
+Lunch~ 2018-02-21 12:08:27 +0000~ 2018-02-21 12:39:28 +0000~ Total Time: 0.52
+Add Labels for regression testing filter~ 2018-02-21 12:55:18 +0000~ 2018-02-21 13:20:29 +0000~ Total Time: 0.42
+Test Case: SG Alerts After Lost Connection  (GMA-FT-2071)~ 2018-02-21 13:49:43 +0000~ 2018-02-21 14:43:12 +0000~ Total Time: 0.89
+Test Excutation Learning~ 2018-02-21 14:44:30 +0000~ 2018-02-21 15:14:45 +0000~ Total Time: 0.5
+Test Case: Alert Settings (Snooze Time and Cal. Reminder)  (GMA-FT-25477)~ 2018-02-21 15:31:39 +0000~ 2018-02-21 16:00:32 +0000~ Total Time: 0.48
+Test Case: Cal Reminder Alert (Foreground) (GMA-FT-3731)~ 2018-02-21 16:19:25 +0000~ 2018-02-21 16:36:50 +0000~ Total Time: 0.29
+Add RAD Linking to sFMEA~ 2018-02-21 16:52:09 +0000~ 2018-02-21 17:23:31 +0000~ Total Time: 0.52
