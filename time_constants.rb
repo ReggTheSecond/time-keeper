@@ -1,0 +1,8 @@
+class TimeConstants
+  SECONDS_IN_A_MINUTE = 60
+  SECONDS_IN_A_HOUR = 3600
+  MINUTES_IN_A_HOUR  = 60
+  HOURS_IN_A_DAY = 24
+  TEN = 10
+  LEADING_ZEROS = 2
+end
