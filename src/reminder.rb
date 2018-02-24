@@ -16,8 +16,6 @@ class Reminder < TimeConstants
   def wait_for_finish_time()
     if @finish_time.class == Time
       while @finish_time > Time.now()
-        puts @finish_time
-        sleep 10
       end
     else
       while @finish_time > DateTime.now()
@@ -25,5 +23,17 @@ class Reminder < TimeConstants
     end
     puts @reminder_name.colorize(:blue)
     system "aplay -q data/audio_files/Alesis-Fusion-Bass-C3.wav"
+  end
+
+  def match_HHMM_format(reminder_time)
+    return reminder_time.match(/\d\d:\d\d/)
+  end
+
+  def match_MM_format(reminder_time)
+    return reminder_time.match(/\d+/)
+  end
+
+  def to_csv()
+    return "#{@reminder_name}~#{@finish_time}"
   end
 end

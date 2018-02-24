@@ -13,9 +13,13 @@ class TaskTracker
   end
 
   def pause_task()
-    @active_task.pause_task()
-    @paused_tasks << @active_task
-    @active_task = NilClass
+    if @active_task.class != NilClass
+      @active_task.pause_task()
+      @paused_tasks << @active_task
+      @active_task = NilClass
+    else
+      puts "No Task To Pause".colorize(:red)
+    end
   end
 
   def unpause_task(task_name)
@@ -39,10 +43,14 @@ class TaskTracker
   end
 
   def end_active_task()
-    @active_task.end_task()
-    puts @active_task.to_s().colorize(:blue)
-    @complete_tasks << @active_task
-    @active_task = NilClass
+    if @active_task.class != NilClass
+      @active_task.end_task()
+      puts @active_task.to_s().colorize(:blue)
+      @complete_tasks << @active_task
+      @active_task = NilClass
+    else
+      puts "No Task To End".colorize(:red)
+    end
   end
 
   def task_paused?(task_name)
@@ -56,6 +64,7 @@ class TaskTracker
 
   def list_paused_tasks()
     @paused_tasks.each do |task|
+      puts task.end_time
       puts task.to_s.colorize(:light_blue)
     end
   end
@@ -76,7 +85,7 @@ class TaskTracker
   end
 
   def shut_down()
-    if @active_task != NilClass
+    if @active_task.class != NilClass
       end_active_task()
     end
     end_paused_tasks()

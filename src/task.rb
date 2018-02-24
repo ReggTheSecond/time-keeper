@@ -59,8 +59,15 @@ class Task < TimeConstants
     end
   end
 
+  def get_end_time()
+    if @end_time.class == NilClass
+      return ""
+    end
+    return @end_time.strftime("%H:%M:%S")
+  end
+
   def to_s()
-    return "Task Name: #{@task_name}\nStarted: #{@start_time.strftime("%H:%M:%S")}\nFinished: #{@end_time.strftime("%H:%M:%S")}\nTotal Time: #{display_time_in_HMS(@total_time)}"
+    return "Task Name: #{@task_name}\nStarted: #{@start_time.strftime("%H:%M:%S")}\nFinished: #{get_end_time()}\nTotal Time: #{display_time_in_HMS(@total_time)}"
   end
 
   def to_csv
