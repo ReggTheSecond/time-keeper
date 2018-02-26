@@ -35,7 +35,7 @@ class Reminder < TimeConstants
   end
 
   def match_MM_format(reminder_time)
-    return reminder_time.match(/^s\d+$/)
+    return reminder_time.match(/^\d+$/)
   end
 
   def to_csv()
