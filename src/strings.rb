@@ -7,7 +7,7 @@ class Strings < Commands
   MAKE_SELECTION = "Please choose one of the following commands:".colorize(:blue)
   FIRST_LINE_OF_OUT_PUT = "Task Name~ Start Time~ End Time~ Total Time\n"
   ENTER_TASK_NAME = "Enter new task name or enter the name of a paused task to continue it:".colorize(:blue)
-  PAUSED_TASKS = "Paused:\n".colorize(:blue)
+  PAUSED_TASKS = "Paused Tasks:\n".colorize(:blue)
   ACTIVE_REMINDERS = "Active Reminders:\n".colorize(:blue)
   ENTER_REMINDER_NAME = "Enter reminder name:".colorize(:blue)
   ENTER_REMINDER_TIME = "Enter time to be reminded at or number of minutes to be reminded in:".colorize(:blue)

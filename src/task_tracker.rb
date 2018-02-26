@@ -63,10 +63,11 @@ class TaskTracker
   end
 
   def list_paused_tasks()
+    csv = ""
     @paused_tasks.each do |task|
-      puts task.end_time
-      puts task.to_s.colorize(:light_blue)
+      csv << "#{task.to_s}\n"
     end
+    return csv.colorize(:light_blue)
   end
 
   def end_paused_tasks()

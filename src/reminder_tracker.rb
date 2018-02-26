@@ -25,10 +25,12 @@ class ReminderTracker
     end
   end
 
-  def list_paused_reminders()
+  def list_reminders()
+    csv = ""
     @active_reminders.each do |reminder|
-      puts reminder.to_csv
+      csv << "#{reminder.to_csv()}\n"
     end
+    return csv.colorize(:light_blue)
   end
 
   def active_reminders_to_csv()

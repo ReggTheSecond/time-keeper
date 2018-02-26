@@ -48,8 +48,8 @@ class RunTaskTracker < Strings
     puts OPENING_MESSAGE
     begin
       puts MAKE_SELECTION
-      puts "#{PAUSED_TASKS}\n#{@task_tracker.list_paused_tasks()}"
-      puts "#{ACTIVE_REMINDERS}\n#{@reminder_tracker.list_paused_reminders()}"
+      puts "#{PAUSED_TASKS}#{@task_tracker.list_paused_tasks()}\n"
+      puts "#{ACTIVE_REMINDERS}#{@reminder_tracker.list_reminders()}\n"#{#{ACTIVE_REMINDERS}}
       puts COMMANDS
       text_entered = gets.chomp
       text_entered = text_entered.strip.downcase
@@ -76,12 +76,12 @@ class RunTaskTracker < Strings
     reminder.reminder_name =  name
     puts ENTER_REMINDER_TIME
     reminder_time = gets.chomp
-    if reminder.match_HHMM_format(reminder_time)
+    if reminder.match_HHMM_format(reminder_time) && reminder.valid_time_format(reminder_time)
       reminder.set_time_to_be_reminded_at(reminder_time)
       @reminder_tracker.add_new_reminder(reminder)
       Thread.new{start_reminder(reminder)}
     elsif reminder.match_MM_format(reminder_time)
-      reminder.remind_in_number_of_minutes(reminder_time)
+      reminder.remind_in_number_of_minutes(reminder_time.to_i())
       @reminder_tracker.add_new_reminder(reminder)
       Thread.new{start_reminder(reminder)}
     else
