@@ -12,6 +12,12 @@ class TaskTracker
     @complete_tasks = Array.new()
   end
 
+  def get_active_task_name()
+    if active_task.class == Task
+      return active_task.task_name.colorize(:light_blue)
+    end
+  end
+
   def pause_task()
     if @active_task.class != NilClass
       @active_task.pause_task()
@@ -43,7 +49,7 @@ class TaskTracker
   end
 
   def end_active_task()
-    if @active_task.class != NilClass
+    if @active_task.class == Task
       @active_task.end_task()
       puts @active_task.to_s().colorize(:blue)
       @complete_tasks << @active_task

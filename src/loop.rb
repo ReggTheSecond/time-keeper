@@ -27,27 +27,29 @@ class RunTaskTracker < Strings
   end
 
   def command_entered(text_entered)
-    return text_entered == PAUSE || text_entered == FINISH || text_entered == EXIT || text_entered == TASK || text_entered == REMINDER
+    return text_entered == PAUSE || text_entered == FINISH || text_entered == EXIT || text_entered == TASK || text_entered == REMINDER || text_entered == EXIT_SHORT || text_entered == PAUSE_SHORT || text_entered == FINISH_SHORT || text_entered == TASK_SHORT|| text_entered == REMINDER_SHORT
   end
 
   def complete_command(command)
-    if command == PAUSE
+    if command == PAUSE || command == PAUSE_SHORT
       @task_tracker.pause_task()
-    elsif command == FINISH
+    elsif command == FINISH || command == FINISH_SHORT
       @task_tracker.end_active_task()
-    elsif command == EXIT
+    elsif command == EXIT || command == EXIT_SHORT
       shut_down()
-    elsif command == TASK
+    elsif command == TASK || command == TASK_SHORT
       create_task()
-    elsif command == REMINDER
+    elsif command == REMINDER || command == REMINDER_SHORT
       create_reminder()
     end
   end
 
   def run_loop()
+    restart_unfunished_active_reminders()
     puts OPENING_MESSAGE
     begin
       puts MAKE_SELECTION
+      puts "#{ACTIVE_TASK}#{@task_tracker.get_active_task_name()}"
       puts "#{PAUSED_TASKS}#{@task_tracker.list_paused_tasks()}\n"
       puts "#{ACTIVE_REMINDERS}#{@reminder_tracker.list_reminders()}\n"#{#{ACTIVE_REMINDERS}}
       puts COMMANDS
@@ -89,6 +91,12 @@ class RunTaskTracker < Strings
     end
   end
 
+  def restart_unfunished_active_reminders()
+    @reminder_tracker.active_reminders.each do |reminder|
+      Thread.new{start_reminder(reminder)}
+    end
+  end
+
   def start_reminder(reminder)
     reminder.wait_for_finish_time()
     @reminder_tracker.remove_complete_reminder(reminder)
@@ -96,6 +104,7 @@ class RunTaskTracker < Strings
 
   def shut_down()
     @file_of_days_tasks << @task_tracker.shut_down()
+    @reminder_tracker.shut_down()
     @should_exit = EXIT
   end
 end

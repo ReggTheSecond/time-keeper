@@ -1,4 +1,4 @@
-
+require_relative 'reminder.rb'
 
 class ReminderTracker
   attr_accessor :active_reminders
@@ -7,9 +7,10 @@ class ReminderTracker
   ACTIVE_REMINDERS_FILE_PATH = "data/active_reminders.csv"
 
   def initialize()
-    @active_reminders_file= File.open(ACTIVE_REMINDERS_FILE_PATH, 'a+')
+    @active_reminders_file= File.open(ACTIVE_REMINDERS_FILE_PATH, 'r+')
     @active_reminders = Array.new()
     @completed_reminders = Array.new()
+    open_active_reminders()
   end
 
   def add_new_reminder(reminder)
@@ -41,7 +42,28 @@ class ReminderTracker
     return csv
   end
 
+  def shut_down()
+    @active_reminders.each do |reminder|
+      active_reminders_file << reminder.to_csv
+    end
+    write_to_file()
+  end
+
   def write_to_file
     @active_reminders_file << active_reminders_to_csv()
+  end
+
+  def open_active_reminders()
+    @active_reminders_file.each_line() do |reminder|
+      new_reminder = to_reminder(reminder)  
+      @active_reminders << new_reminder
+    end
+  end
+
+  def to_reminder(reminder)
+    new_reminder = Reminder.new()
+    new_reminder.reminder_name = reminder.split("~").first()
+    new_reminder.finish_time = reminder.split("~").last()
+    return new_reminder
   end
 end
